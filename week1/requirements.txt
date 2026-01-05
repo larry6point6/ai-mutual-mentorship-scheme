@@ -1,0 +1,9 @@
+haystack-ai>=2.21
+ollama-haystack>=5.3.0
+chroma-haystack>=3.4.1
+chromadb>=0.4
+python-dotenv>=1.0
+pypdf>=4.0
+unstructured>=0.14
+requests>=2.31
+ipykernel>=6.29
