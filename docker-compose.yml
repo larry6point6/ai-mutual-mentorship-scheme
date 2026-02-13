@@ -1,0 +1,8 @@
+version: "3.9"
+
+services:
+  web:
+    image: nginx:latest
+    container_name: simple_nginx
+    ports:
+      - "8080:80"
