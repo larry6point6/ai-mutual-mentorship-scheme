@@ -1,6 +1,8 @@
 import streamlit as st
+from retriever import retrieve
 
-st.title("Hello World")
+query = st.text_input("Ask a question")
+mode = st.selectbox("Retrieval mode", ["hybrid", "embedding", "bm25"])
 
-st.write("Running")
-
+if st.button("Search"):
+    st.write(retrieve(query, mode=mode))
