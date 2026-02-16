@@ -8,9 +8,12 @@ from haystack_integrations.components.embedders.ollama import OllamaTextEmbedder
 
 
 OPENSEARCH = {
-    "hosts": ["http://localhost:9200"],
-    "index": "demo_docs",
-    "embedding_dim": 768, 
+    "hosts": ["https://localhost:9200"],
+    "index": "public_texts",
+    "embedding_dim": 768,
+    "use_ssl": True,
+    "verify_certs": False,
+    "http_auth": ("admin", "OSPassword246"),
 }
 
 EMBED_MODEL = "nomic-embed-text"
@@ -71,8 +74,6 @@ def retrieve(query: str, mode: str = "hybrid") -> str:
     for i, doc in enumerate(documents, start=1):
         snippet = doc.content[:400].strip()
         source = doc.meta.get("source", "unknown")
-        lines.append(
-            f"{i}. {snippet}\n   source: {source}"
-        )
+        lines.append(f"{i}. {snippet}\n   source: {source}")
 
-    return "\n\n".join(lines)
+    return {"text": "\n\n".join(lines), "documents": documents}
