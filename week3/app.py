@@ -1,8 +1,7 @@
 import streamlit as st
-from retriever import retrieve
+from rag_pipeline import run_query
 
-query = st.text_input("Ask a question")
-mode = st.selectbox("Retrieval mode", ["hybrid", "embedding", "bm25"])
+query = st.text_input("What is your query?")
 
-if st.button("Search"):
-    st.write(retrieve(query, mode=mode))
+if st.button("Run query"):
+    st.write(run_query(query))
