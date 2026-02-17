@@ -19,3 +19,4 @@ requests>=2.31.0
 
 # === Jupyter / Kernel Support ===
 ipykernel>=6.29.0
+trafilatura==2.0.0
