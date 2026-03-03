@@ -42,7 +42,7 @@ def _document_store() -> OpenSearchDocumentStore:
     return OpenSearchDocumentStore(
         hosts=opensearch_url,
         index=index_name,
-        use_ssl=True,
+        use_ssl=False,
         verify_certs=False,
         http_auth=("admin", "OSPassword246"),
     )
@@ -54,7 +54,7 @@ def build_ingestion_pipeline(document_store: OpenSearchDocumentStore) -> Pipelin
         "ai-mutual-mentorship/0.1 (https://github.com/larry6point6/ai-mutual-mentorship-scheme)",
     )
 
-    fetcher = LinkContentFetcher(user_agents=[user_agent])
+    fetcher = LinkContentFetcher(user_agents=[user_agent], client_kwargs={"verify": False})
     converter = HTMLToDocument()
     cleaner = DocumentCleaner()
     splitter = DocumentSplitter(
