@@ -27,6 +27,9 @@ def startup():
     global PIPELINES
     PIPELINES = build_pipelines()
 
+@app.get("/")
+def root():
+    return {"message": "Welcome to the Haystack RAG Service! Use /ingest to add documents and /query to ask questions."}
 
 @app.post("/ingest", response_model=IngestResponse)
 def ingest(req: IngestRequest):
