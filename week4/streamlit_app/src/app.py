@@ -2,7 +2,7 @@ import os
 import requests
 import streamlit as st
 
-RETRIEVAL_URL = os.getenv("RETRIEVAL_URL", "http://retrieval-service:8002/query")
+RETRIEVAL_URL = os.getenv("RETRIEVAL_URL", "http://haystack-api:8000/query")
 
 st.set_page_config(page_title="RAG Demo", layout="wide")
 st.title("RAG Query")
